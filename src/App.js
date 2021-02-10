@@ -9,7 +9,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      currentStep: 1,
+      currentStep: 0,
       welcomeIsShowing: true,
       closeIsShowing: false,
       seconds: 5,
@@ -66,13 +66,18 @@ class App extends Component {
           <Welcome onClickWelcome={this.onClickWelcome} />
         ) : null}
 
-        {/* {this.state.seconds === 0 ? clearInterval(this.timer) : null} */}
         {this.state.closeIsShowing ? (
-          <GameOver onClickRestart={this.onClickRestart} points={this.points} />
+          <GameOver
+            onClickRestart={this.onClickRestart}
+            points={this.state.points}
+          />
         ) : null}
 
         <section>
-          <GameBox cards={this.state.cards}></GameBox>
+          <GameBox
+            cards={this.state.cards}
+            currentStep={this.state.currentStep}
+          ></GameBox>
           <div className="scoreboard">
             <div>Time Left:&nbsp; {this.state.seconds}</div>
             <div>Points :&nbsp; {this.state.points}</div>

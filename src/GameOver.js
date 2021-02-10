@@ -3,10 +3,12 @@ const GameOver = ({ onClickRestart, points }) => (
     <font size="8">Game Over</font>&nbsp;&nbsp;
     <br />
     <font size="6">
-      {/* {points} pastries were caught! */}
+      {points} points scored!
       <br />
     </font>
     <font size="6">
+      <br />
+
       <button
         onClick={() => {
           onClickRestart();
@@ -14,6 +16,7 @@ const GameOver = ({ onClickRestart, points }) => (
         type="button"
         className="btn btn-info btn-lg"
       >
+        {" "}
         Encore!
       </button>
     </font>
