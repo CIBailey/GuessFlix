@@ -79,7 +79,7 @@ footer {
 .popup-welcome {
   position: absolute;
   width: 600px;
-  left: 30%;
+  left: 28%;
   margin-top: 40px;
   background-color: white;
   color: black;
@@ -96,13 +96,11 @@ footer {
   background-color: white;
   width: 100% !important;
   max-width: 600px;
-  opacity: 0.9;
-  color: #867979;
-  border: 3px solid #c0a594;
+  color: black;
+  border: 3px solid black;
   border-radius: 10px;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  left: 28%;
+  margin-top: 40px;
   text-align: center;
   z-index: 1;
   padding: 30px;

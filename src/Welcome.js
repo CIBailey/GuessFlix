@@ -4,19 +4,21 @@ const Welcome = ({ onClickWelcome }) => (
     <br />
     <br />
     <font size="4.5">
-      Instructions: In this game, your goal is to catch as many pastries as
-      possible before time runs out! <br />
+      Instructions: Get as many points before the timer runs out.
       <br />
-      Move the basket from left to right with your mousepad to collect
       <br />
-      the bready goodness in your basket.
+      Respond to the question by choosing "YES" or "NO". <br />
       <br />
+      If you guess correctly, you score! <br />
       <br />
     </font>
+
     <button
       onClick={() => {
         onClickWelcome();
       }}
+      type="button"
+      className="btn btn-info btn-lg"
     >
       Let's Go!
     </button>

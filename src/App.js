@@ -1,6 +1,7 @@
 import "./App.css";
 import GameBox from "./GameBox.js";
 import Welcome from "./Welcome.js";
+import GameOver from "./GameOver.js";
 import React, { Component } from "react";
 
 class App extends Component {
@@ -11,16 +12,39 @@ class App extends Component {
       currentStep: 1,
       welcomeIsShowing: true,
       closeIsShowing: false,
-      seconds: 30,
+      seconds: 5,
       points: 0,
     };
 
     this.onClickWelcome = this.onClickWelcome.bind(this);
+    this.onClickRestart = this.onClickRestart.bind(this);
   }
 
   onClickWelcome() {
-    this.setState({ welcomeIsShowing: false });
-    console.log(this.state, "bing");
+    this.setState({ welcomeIsShowing: false, closeIsShowing: false });
+    this.timer = setInterval(() => {
+      if (this.state.seconds <= 0) {
+        clearInterval(this);
+        this.setState({
+          closeIsShowing: true,
+        });
+      } else {
+        this.setState((previousState) => {
+          return {
+            seconds: previousState.seconds - 1,
+          };
+        });
+      }
+    }, 1000);
+  }
+
+  onClickRestart() {
+    this.setState({
+      welcomeIsShowing: true,
+      closeIsShowing: false,
+      second: 30,
+      points: 0,
+    });
   }
 
   componentDidMount() {
@@ -40,6 +64,11 @@ class App extends Component {
         <header>GuessFlix</header>
         {this.state.welcomeIsShowing ? (
           <Welcome onClickWelcome={this.onClickWelcome} />
+        ) : null}
+
+        {/* {this.state.seconds === 0 ? clearInterval(this.timer) : null} */}
+        {this.state.closeIsShowing ? (
+          <GameOver onClickRestart={this.onClickRestart} points={this.points} />
         ) : null}
 
         <section>
