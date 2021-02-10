@@ -1,38 +1,108 @@
-.App {
+body {
+  display: block;
+  margin: auto;
   text-align: center;
+  background-color: #e2d2c7;
+  background-image: url("./images/seamless-pattern-with-popcorn-bucket_185107-183.jpg");
+  background-repeat: repeat;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header {
+  font-family: "Merriweather", serif;
+  font-size: 50px;
+  color: black;
+  display: block;
+  text-align: center;
+  margin: auto;
+  padding: 1%;
+  width: 605px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+section {
+  border: 2px solid white;
+  border: 5px solid black;
+  display: block;
+  margin: auto;
+  text-align: center;
+  height: 300px;
+  width: 550px;
+  border-radius: 10px;
+  background-color: white;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.scoreboard {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  padding-right: 50px;
+  padding-left: 55px;
+  background-color: white;
+  opacity: 0.8;
+  margin: auto;
+  width: 518;
+  color: #696060;
+  font-family: "Merriweather", serif;
+  font-size: 20px;
+  border-radius: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+footer {
+  font-family: "Merriweather", serif;
+  color: black;
+  display: block;
+  bottom: 0;
+  position: fixed;
+  text-align: center;
+  float: left;
+  background-color: white;
+  opacity: 0.8;
+  padding: 5px;
+  border-radius: 7px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.popup-welcome {
+  width: 600x;
+  height: 400px;
+  position: fixed;
+  background-color: white;
+  opacity: 0.9;
+  color: #867979;
+  border: 3px solid #c0a594;
+  border-radius: 10px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 1;
+  padding: 30px;
+  font-family: "Abel", sans-serif;
+}
+
+.popup-end {
+  position: fixed;
+  background-color: white;
+  width: 100% !important;
+  max-width: 600px;
+  opacity: 0.9;
+  color: #867979;
+  border: 3px solid #c0a594;
+  border-radius: 10px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 1;
+  padding: 30px;
+  font-family: "Abel", sans-serif;
+}
+
+.my-game {
+  /* border: 2px solid red; */
+  display: block;
+  margin: auto;
+  text-align: center;
+  /* padding-block-start: 15px; */
+  /* /* width: 518px; */
+  height: 253px;
+  /* background-color: white; */
 }
