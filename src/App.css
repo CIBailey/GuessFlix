@@ -8,14 +8,14 @@ body {
 }
 
 header {
-  font-family: "Merriweather", serif;
-  font-size: 50px;
-  color: black;
-  display: block;
-  text-align: center;
+  background-color: #ed5151;
+  text-align: left;
   margin: auto;
   padding: 1%;
-  width: 605px;
+  font-weight: bold;
+  font-family: "Merriweather", serif;
+  font-size: 20px;
+  color: white;
 }
 
 section {
@@ -23,6 +23,7 @@ section {
   border: 5px solid black;
   display: block;
   margin: auto;
+  margin-top: 40px;
   text-align: center;
   height: 300px;
   width: 550px;
@@ -43,7 +44,6 @@ section {
   color: #696060;
   font-family: "Merriweather", serif;
   font-size: 20px;
-  border-radius: 10px;
 }
 
 footer {
@@ -60,20 +60,33 @@ footer {
   border-radius: 7px;
 }
 
+.card-text {
+  width: auto;
+  display: flex;
+  justify-content: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  font-size: 23px;
+  color: rgb(102 102 102);
+  padding: 50px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
 .popup-welcome {
-  width: 600x;
-  height: 400px;
-  position: fixed;
+  position: absolute;
+  width: 600px;
+  left: 30%;
+  margin-top: 40px;
   background-color: white;
-  opacity: 0.9;
-  color: #867979;
-  border: 3px solid #c0a594;
+  color: black;
+  border: 3px solid black;
   border-radius: 10px;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
   text-align: center;
-  z-index: 1;
+  z-index: 100;
   padding: 30px;
   font-family: "Abel", sans-serif;
 }
@@ -97,12 +110,8 @@ footer {
 }
 
 .my-game {
-  /* border: 2px solid red; */
   display: block;
   margin: auto;
   text-align: center;
-  /* padding-block-start: 15px; */
-  /* /* width: 518px; */
   height: 253px;
-  /* background-color: white; */
 }

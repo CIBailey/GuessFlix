@@ -1,9 +1,31 @@
-function GameBox() {
-  return (
-    <div className="GameBox" class="my-game">
-      Hell0
-    </div>
-  );
+function GameBox(cards) {
+  if (cards.cards) {
+    return cards.cards.map((value, index) => {
+      return (
+        <div className="my-game" key={value.id}>
+          <div className="card-text">
+            Did &nbsp;
+            <div style={{ color: "rgb(62 115 199)" }}>{value.name}</div>{" "}
+            &nbsp;play in
+            <div style={{ color: "rgb(62 115 199)" }}>
+              {value.known_for[0].original_title}
+            </div>
+            ?
+          </div>{" "}
+          <div className="buttons">
+            <button type="button" className="btn btn-success btn-lg">
+              Yes
+            </button>
+            <button type="button" className="btn btn-danger btn-lg">
+              No
+            </button>
+          </div>
+        </div>
+      );
+    });
+  } else {
+    return <div>Error!</div>;
+  }
 }
 
 export default GameBox;
