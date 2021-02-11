@@ -15,6 +15,7 @@ class App extends Component {
       seconds: 1,
       points: 0,
       highscore: 0,
+      movieArray: [],
     };
 
     this.onClickWelcome = this.onClickWelcome.bind(this);
@@ -55,22 +56,45 @@ class App extends Component {
       closeIsShowing: false,
       points: 0,
     });
+    this.createMovieArray();
   }
 
-  onClickNext() {
+  onClickNext(answer, index) {
     this.setState((previousState) => {
       return {
         currentStep: previousState.currentStep + 1,
       };
     });
 
-    //iff is correct
+    console.log(this.state.movieArray);
 
-    this.setState((previousState) => {
-      return {
-        points: previousState.points + 1,
-      };
-    });
+    if (this.state.movieArray.includes(index)) {
+      if (answer === "no") {
+        this.setState((previousState) => {
+          return {
+            points: previousState.points + 1,
+          };
+        });
+      }
+    } else {
+      if (answer === "yes") {
+        this.setState((previousState) => {
+          return {
+            points: previousState.points + 1,
+          };
+        });
+      }
+    }
+  }
+
+  createMovieArray() {
+    let movieArray = [];
+    const number = Math.random() * this.state.movies.length;
+    for (let step = 0; step < number; step++) {
+      const magicNumber = Math.floor(Math.random() * this.state.movies.length);
+      movieArray.push(magicNumber);
+    }
+    this.setState({ movieArray: movieArray });
   }
 
   componentDidMount() {
@@ -80,15 +104,15 @@ class App extends Component {
       .then((res) => res.json())
       .then((data) => {
         this.setState({ cards: data.results });
-      })
-      .catch(console.log);
-
-    fetch(
-      "https://api.themoviedb.org/3/person/popular?api_key=7cd25a19b40590d8e32448a45fcfc70f"
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        this.setState({ movies: data.results });
+        fetch(
+          "https://api.themoviedb.org/3/movie/popular?api_key=7cd25a19b40590d8e32448a45fcfc70f"
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            this.setState({ movies: data.results });
+            this.createMovieArray();
+          })
+          .catch(console.log);
       })
       .catch(console.log);
   }
@@ -112,6 +136,8 @@ class App extends Component {
         <section>
           <GameBox
             cards={this.state.cards}
+            movies={this.state.movies}
+            movieArray={this.state.movieArray}
             currentStep={this.state.currentStep}
             onClickNext={this.onClickNext}
           ></GameBox>
