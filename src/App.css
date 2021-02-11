@@ -20,14 +20,14 @@ header {
 
 section {
   border: 2px solid white;
-  border: 5px solid black;
+  border: 2px solid rgb(56 54 47);
   display: block;
   margin: auto;
   margin-top: 40px;
   text-align: center;
   height: 300px;
   width: 550px;
-  border-radius: 10px;
+  border-radius: 6px;
   background-color: white;
 }
 
@@ -48,7 +48,7 @@ section {
 
 footer {
   font-family: "Merriweather", serif;
-  color: black;
+  color: rgb(56 54 47);
   display: block;
   bottom: 0;
   position: fixed;
@@ -82,9 +82,9 @@ footer {
   left: 28%;
   margin-top: 40px;
   background-color: white;
-  color: black;
-  border: 3px solid black;
-  border-radius: 10px;
+  color: rgb(56 54 47);
+  border: 2px solid rgb(56 54 47);
+  border-radius: 6px;
   text-align: center;
   z-index: 100;
   padding: 30px;
@@ -97,9 +97,9 @@ footer {
   background-color: white;
   width: 100% !important;
   max-width: 600px;
-  color: black;
-  border: 3px solid black;
-  border-radius: 10px;
+  color: rgb(56 54 47);
+  border: 1px solid rgb(56 54 47);
+  border-radius: 6px;
   left: 28%;
   margin-top: 40px;
   text-align: center;

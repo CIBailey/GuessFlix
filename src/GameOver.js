@@ -1,14 +1,16 @@
 const GameOver = ({ onClickRestart, points }) => (
   <div className="popup-end">
-    <font size="8">Game Over</font>&nbsp;&nbsp;
+    <font size="6">Game Over</font>
     <br />
-    <font size="6">
+    <br />
+    <br />
+    <font size="4">
       {points} points scored!
       <br />
     </font>
-    <font size="6">
+    <font size="4">
       <br />
-
+      <br />
       <button
         onClick={() => {
           onClickRestart();
@@ -16,7 +18,6 @@ const GameOver = ({ onClickRestart, points }) => (
         type="button"
         className="btn btn-info btn-lg"
       >
-        {" "}
         Encore!
       </button>
     </font>

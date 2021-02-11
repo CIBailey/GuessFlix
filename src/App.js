@@ -9,7 +9,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      currentStep: 0,
+      currentStep: 1,
       welcomeIsShowing: true,
       closeIsShowing: false,
       seconds: 5,
@@ -24,9 +24,10 @@ class App extends Component {
     this.setState({ welcomeIsShowing: false, closeIsShowing: false });
     this.timer = setInterval(() => {
       if (this.state.seconds <= 0) {
-        clearInterval(this);
+        clearInterval(this.timer);
         this.setState({
           closeIsShowing: true,
+          seconds: 30,
         });
       } else {
         this.setState((previousState) => {
@@ -42,7 +43,6 @@ class App extends Component {
     this.setState({
       welcomeIsShowing: true,
       closeIsShowing: false,
-      second: 30,
       points: 0,
     });
   }
@@ -59,6 +59,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.currentStep, "main");
     return (
       <body className="App">
         <header>GuessFlix</header>
