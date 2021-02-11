@@ -14,10 +14,22 @@ function GameBox(props) {
               ?
             </div>{" "}
             <div className="buttons">
-              <button type="button" className="btn btn-success btn-lg">
+              <button
+                onClick={() => {
+                  props.onClickNext();
+                }}
+                type="button"
+                className="btn btn-success btn-lg"
+              >
                 Yes
               </button>
-              <button type="button" className="btn btn-danger btn-lg">
+              <button
+                onClick={() => {
+                  props.onClickNext();
+                }}
+                type="button"
+                className="btn btn-danger btn-lg"
+              >
                 No
               </button>
             </div>

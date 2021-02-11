@@ -9,26 +9,36 @@ class App extends Component {
     super(props);
 
     this.state = {
-      currentStep: 1,
+      currentStep: 0,
       welcomeIsShowing: true,
       closeIsShowing: false,
-      seconds: 5,
+      seconds: 1,
       points: 0,
+      highscore: 0,
     };
 
     this.onClickWelcome = this.onClickWelcome.bind(this);
     this.onClickRestart = this.onClickRestart.bind(this);
+    this.onClickNext = this.onClickNext.bind(this);
   }
 
   onClickWelcome() {
     this.setState({ welcomeIsShowing: false, closeIsShowing: false });
     this.timer = setInterval(() => {
       if (this.state.seconds <= 0) {
+        //END GAME
         clearInterval(this.timer);
         this.setState({
           closeIsShowing: true,
           seconds: 30,
         });
+        if (this.state.highscore < this.state.points) {
+          this.setState((previousState) => {
+            return {
+              highscore: previousState.points,
+            };
+          });
+        }
       } else {
         this.setState((previousState) => {
           return {
@@ -47,6 +57,22 @@ class App extends Component {
     });
   }
 
+  onClickNext() {
+    this.setState((previousState) => {
+      return {
+        currentStep: previousState.currentStep + 1,
+      };
+    });
+
+    //iff is correct
+
+    this.setState((previousState) => {
+      return {
+        points: previousState.points + 1,
+      };
+    });
+  }
+
   componentDidMount() {
     fetch(
       "https://api.themoviedb.org/3/person/popular?api_key=7cd25a19b40590d8e32448a45fcfc70f"
@@ -56,10 +82,18 @@ class App extends Component {
         this.setState({ cards: data.results });
       })
       .catch(console.log);
+
+    fetch(
+      "https://api.themoviedb.org/3/person/popular?api_key=7cd25a19b40590d8e32448a45fcfc70f"
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        this.setState({ movies: data.results });
+      })
+      .catch(console.log);
   }
 
   render() {
-    console.log(this.state.currentStep, "main");
     return (
       <body className="App">
         <header>GuessFlix</header>
@@ -71,6 +105,7 @@ class App extends Component {
           <GameOver
             onClickRestart={this.onClickRestart}
             points={this.state.points}
+            highscore={this.state.highscore}
           />
         ) : null}
 
@@ -78,6 +113,7 @@ class App extends Component {
           <GameBox
             cards={this.state.cards}
             currentStep={this.state.currentStep}
+            onClickNext={this.onClickNext}
           ></GameBox>
           <div className="scoreboard">
             <div>Time Left:&nbsp; {this.state.seconds}</div>

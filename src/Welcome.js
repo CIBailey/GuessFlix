@@ -7,7 +7,7 @@ const Welcome = ({ onClickWelcome }) => (
       Instructions: Get as many points before the timer runs out.
       <br />
       <br />
-      Respond to the question by choosing "YES" or "NO". <br />
+      Respond to the question by choosing YES or NO. <br />
       <br />
       If you guess correctly, you score! <br />
       <br />
@@ -20,7 +20,7 @@ const Welcome = ({ onClickWelcome }) => (
       type="button"
       className="btn btn-info btn-lg"
     >
-      Let's Go!
+      Let's Go
     </button>
   </div>
 );
