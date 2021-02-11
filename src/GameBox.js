@@ -10,11 +10,42 @@ function GameBox(props) {
               &nbsp;play in&nbsp;
               <div style={{ color: "rgb(62 115 199)" }}>
                 {props.movieArray.includes(index)
-                  ? props.movies[index].title + "WRONG"
-                  : value.known_for[0].original_title + "RIGHT"}
+                  ? props.movies[index].title
+                    ? props.movies[index].title
+                    : props.movies[index].name
+                  : value.known_for[0].title
+                  ? value.known_for[0].title
+                  : value.known_for[0].name}
               </div>
               ?
             </div>{" "}
+            <div className="pictures">
+              {" "}
+              <div>
+                {" "}
+                <img
+                  // style={{ float: "left" }}
+                  src={
+                    "https://image.tmdb.org/t/p/original" + value.profile_path
+                  }
+                  width="100px"
+                  alt="Actor"
+                />
+              </div>
+              <div>
+                {" "}
+                <img
+                  // style={{ float: "right" }}
+                  src={
+                    "https://image.tmdb.org/t/p/original" +
+                    props.movies[index].poster_path
+                  }
+                  width="100px"
+                  alt="Movie"
+                />
+              </div>
+            </div>
+            <hr />
             <div className="buttons">
               <button
                 onClick={() => {

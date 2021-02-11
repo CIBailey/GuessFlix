@@ -3,6 +3,7 @@ import GameBox from "./GameBox.js";
 import Welcome from "./Welcome.js";
 import GameOver from "./GameOver.js";
 import React, { Component } from "react";
+import logoCredit from "./images/blue_square_1-5bdc75aaebeb75dc7ae79426ddd9be3b2be1e342510f8202baf6bffa71d7f5c4.svg";
 
 class App extends Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class App extends Component {
       currentStep: 0,
       welcomeIsShowing: true,
       closeIsShowing: false,
-      seconds: 1,
+      seconds: 30,
       points: 0,
       highscore: 0,
       movieArray: [],
@@ -66,10 +67,8 @@ class App extends Component {
       };
     });
 
-    console.log(this.state.movieArray);
-
     if (this.state.movieArray.includes(index)) {
-      if (answer === "no") {
+      if (answer === "No") {
         this.setState((previousState) => {
           return {
             points: previousState.points + 1,
@@ -77,7 +76,7 @@ class App extends Component {
         });
       }
     } else {
-      if (answer === "yes") {
+      if (answer === "Yes") {
         this.setState((previousState) => {
           return {
             points: previousState.points + 1,
@@ -89,10 +88,12 @@ class App extends Component {
 
   createMovieArray() {
     let movieArray = [];
-    const number = Math.random() * this.state.movies.length;
+    const number = Math.random() * (this.state.movies.length - 5) + 5;
     for (let step = 0; step < number; step++) {
       const magicNumber = Math.floor(Math.random() * this.state.movies.length);
-      movieArray.push(magicNumber);
+      if (!movieArray.includes(magicNumber)) {
+        movieArray.push(magicNumber);
+      }
     }
     this.setState({ movieArray: movieArray });
   }
@@ -120,7 +121,16 @@ class App extends Component {
   render() {
     return (
       <body className="App">
-        <header>GuessFlix</header>
+        <header>
+          GuessFlix{" "}
+          <img
+            style={{ float: "right" }}
+            src={logoCredit}
+            width="80px"
+            alt="DB Logo"
+          />
+        </header>
+
         {this.state.welcomeIsShowing ? (
           <Welcome onClickWelcome={this.onClickWelcome} />
         ) : null}
